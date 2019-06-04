@@ -1,0 +1,31 @@
+{
+  "pools": [
+    {
+      "name": "NashCash Official",
+      "url": "https://pool.nashcash.net",
+      "api": "https://pool.nashcash.net:8119/",
+      "type": "forknote",
+      "miningAddress": "pool.nashcash.net",
+      "mergedMining": false,
+      "mergedMiningIsParentChain": false
+     },
+    {
+      "name": "BlueRock Pools",
+      "url": "https://naca.bluerockpools.net",
+      "api": "https://naca.bluerockpools.net:8123/",
+      "type": "forknote",
+      "miningAddress": "naca.bluerockpools.net",
+      "mergedMining": false,
+      "mergedMiningIsParentChain": false
+     },
+     {
+      "name": "Miners Republic",
+      "url": "http://minersrepublic.com",
+      "api": "http://minersrepublic.com:8120/",
+      "type": "forknote",
+      "miningAddress": "minersrepublic.com",
+      "mergedMining": false,
+      "mergedMiningIsParentChain": false
+     }
+  ]
+}
