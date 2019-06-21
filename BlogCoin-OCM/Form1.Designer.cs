@@ -1,4 +1,4 @@
-﻿namespace NashCashOCM
+﻿namespace BlogCoinOCM
 {
     partial class Form1
     {
@@ -418,7 +418,7 @@
             this.addressRb.Size = new System.Drawing.Size(195, 24);
             this.addressRb.TabIndex = 3;
             this.addressRb.TabStop = true;
-            this.addressRb.Text = "Mine to address (NaCa...):";
+            this.addressRb.Text = "Mine to address (bL...):";
             this.addressRb.UseVisualStyleBackColor = true;
             // 
             // gpuMiningCheck
@@ -1048,7 +1048,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
-            this.Text = "NashCash OneClickMiner";
+            this.Text = "BlogCoin OneClickMiner";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);

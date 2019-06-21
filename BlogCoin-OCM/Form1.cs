@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace NashCashOCM
+namespace BlogCoinOCM
 {
     public partial class Form1 : Form
     {
@@ -28,17 +28,17 @@ namespace NashCashOCM
             startBtn.Enabled = false;
             startBtn.Text = "Initializing pools...";
 
-            addressTb.Text = NashCashOCM.Properties.Settings.Default.savedAddress;
-            cpuMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.cpuCb;
-            nvidiaMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.nvCb;
-            amdMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.amdCb;
-            gpuMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.gpuCb;
-            cpuUsageNum.Value = NashCashOCM.Properties.Settings.Default.cpuPerc;
-            hardwareCb.SelectedIndex = NashCashOCM.Properties.Settings.Default.hwType;
-            refreshTimeNum.Value = NashCashOCM.Properties.Settings.Default.statsSecs;
-            writeLogCheck.Checked = NashCashOCM.Properties.Settings.Default.logCb;
-            showCLICheck.Checked = NashCashOCM.Properties.Settings.Default.cliCb;
-            minerSelectionCb.SelectedIndex = NashCashOCM.Properties.Settings.Default.minerPreference;
+            addressTb.Text = BlogCoinOCM.Properties.Settings.Default.savedAddress;
+            cpuMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.cpuCb;
+            nvidiaMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.nvCb;
+            amdMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.amdCb;
+            gpuMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.gpuCb;
+            cpuUsageNum.Value = BlogCoinOCM.Properties.Settings.Default.cpuPerc;
+            hardwareCb.SelectedIndex = BlogCoinOCM.Properties.Settings.Default.hwType;
+            refreshTimeNum.Value = BlogCoinOCM.Properties.Settings.Default.statsSecs;
+            writeLogCheck.Checked = BlogCoinOCM.Properties.Settings.Default.logCb;
+            showCLICheck.Checked = BlogCoinOCM.Properties.Settings.Default.cliCb;
+            minerSelectionCb.SelectedIndex = BlogCoinOCM.Properties.Settings.Default.minerPreference;
 
             initPools();
         }
@@ -50,7 +50,7 @@ namespace NashCashOCM
         {
             WebClient wc = new WebClient();
             wc.DownloadStringCompleted += new DownloadStringCompletedEventHandler(writePoolsToList);
-            wc.DownloadStringAsync(new Uri("https://raw.githubusercontent.com/Nash-Cash/OCM/master/pools.json"));
+            wc.DownloadStringAsync(new Uri("https://raw.githubusercontent.com/blognetwork/OneClickMiner/master/pools.json"));
         }
 
         private async void writePoolsToList(object sender, DownloadStringCompletedEventArgs e)
@@ -69,7 +69,7 @@ namespace NashCashOCM
                     entryElement.setAutoUpdate(poolStatsUpdateCb.Checked);
                     entryElement.selectedCb.Enabled = selectionModeCb.Text == "manual selection" ? true : false;
 
-                    entryElement.selectedCb.Checked = NashCashOCM.Properties.Settings.Default.savedPools.Contains(poolInfo[2]);
+                    entryElement.selectedCb.Checked = BlogCoinOCM.Properties.Settings.Default.savedPools.Contains(poolInfo[2]);
 
                     entryElement.Dock = DockStyle.Top;
                     poolListPanel.Controls.Add(entryElement);
@@ -285,7 +285,7 @@ namespace NashCashOCM
                     break;
             }
 
-            NashCashOCM.Properties.Settings.Default.poolPreference = selectionModeCb.SelectedIndex;
+            BlogCoinOCM.Properties.Settings.Default.poolPreference = selectionModeCb.SelectedIndex;
         }
         
         private string MinerExecutableNotFound(string filename)
@@ -309,9 +309,9 @@ namespace NashCashOCM
         {
             if (startBtn.Text == "Start mining!")
             {
-                if (addressRb.Checked && !addressTb.Text.StartsWith("NaCa") && addressTb.Text.Length != 99)
+                if (addressRb.Checked && !addressTb.Text.StartsWith("bL") && addressTb.Text.Length != 99)
                 {
-                    MessageBox.Show("Please check your NashCash receiving address.");
+                    MessageBox.Show("Please check your BlogCoin receiving address.");
                     return;
                 }
 
@@ -372,7 +372,7 @@ namespace NashCashOCM
 
                         cpuMinerInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 
-                        cpuMinerInfo.FileName = NashCashOCM.Properties.Settings.Default.xmrigCPUpath; // @"miners\xmrig\xmrig.exe";
+                        cpuMinerInfo.FileName = BlogCoinOCM.Properties.Settings.Default.xmrigCPUpath; // @"miners\xmrig\xmrig.exe";
                         cpuMinerInfo.Arguments = cpuArguments;
                         if (showCLICheck.Checked)
                         {
@@ -394,7 +394,7 @@ namespace NashCashOCM
                             if (location != "")
                             {
                                 miner.StartInfo.FileName = location;
-                                NashCashOCM.Properties.Settings.Default.xmrigCPUpath = location;
+                                BlogCoinOCM.Properties.Settings.Default.xmrigCPUpath = location;
                                 miner.Start();
                             }
                             else
@@ -416,7 +416,7 @@ namespace NashCashOCM
 
                         amdMinerInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 
-                        amdMinerInfo.FileName = NashCashOCM.Properties.Settings.Default.xmrigAMDpath; //@"miners\xmrigamd\xmrig-amd.exe";
+                        amdMinerInfo.FileName = BlogCoinOCM.Properties.Settings.Default.xmrigAMDpath; //@"miners\xmrigamd\xmrig-amd.exe";
                         amdMinerInfo.Arguments = amdArguments;
                         if (showCLICheck.Checked)
                         {
@@ -438,7 +438,7 @@ namespace NashCashOCM
                             if (location != "")
                             {
                                 miner.StartInfo.FileName = location;
-                                NashCashOCM.Properties.Settings.Default.xmrigAMDpath = location;
+                                BlogCoinOCM.Properties.Settings.Default.xmrigAMDpath = location;
                                 miner.Start();
                             }
                             else
@@ -460,7 +460,7 @@ namespace NashCashOCM
 
                         nvidiaMinerInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 
-                        nvidiaMinerInfo.FileName = NashCashOCM.Properties.Settings.Default.xmrigNVpath; //@"miners\xmrignvidia\xmrig-nvidia.exe";
+                        nvidiaMinerInfo.FileName = BlogCoinOCM.Properties.Settings.Default.xmrigNVpath; //@"miners\xmrignvidia\xmrig-nvidia.exe";
                         nvidiaMinerInfo.Arguments = nvidiaArguments;
                         if (showCLICheck.Checked)
                         {
@@ -482,7 +482,7 @@ namespace NashCashOCM
                             if (location != "")
                             {
                                 miner.StartInfo.FileName = location;
-                                NashCashOCM.Properties.Settings.Default.xmrigNVpath = location;
+                                BlogCoinOCM.Properties.Settings.Default.xmrigNVpath = location;
                                 miner.Start();
                             }
                             else
@@ -511,7 +511,7 @@ namespace NashCashOCM
                     }
 
                     arguments += " --currency cryptonight_lite_v7";
-                    arguments += " -i 6777 -r NashCashOCM";
+                    arguments += " -i 6777 -r BlogCoinOCM";
 
                     foreach (string pool in GetSelectedPools())
                     {
@@ -529,7 +529,7 @@ namespace NashCashOCM
 
                     minerInfo.WorkingDirectory = Directory.GetCurrentDirectory();
 
-                    minerInfo.FileName = NashCashOCM.Properties.Settings.Default.xmrstakpath; //@"miners\xmr-stak\xmr-stak.exe";
+                    minerInfo.FileName = BlogCoinOCM.Properties.Settings.Default.xmrstakpath; //@"miners\xmr-stak\xmr-stak.exe";
                     minerInfo.Arguments = arguments;
 
                     miner.StartInfo = minerInfo;
@@ -544,7 +544,7 @@ namespace NashCashOCM
                         if (location != "")
                         {
                             miner.StartInfo.FileName = location;
-                            NashCashOCM.Properties.Settings.Default.xmrstakpath = location;
+                            BlogCoinOCM.Properties.Settings.Default.xmrstakpath = location;
                             miner.Start();
                         }
                         else
@@ -563,7 +563,7 @@ namespace NashCashOCM
                     return;
                 }
 
-                NashCashOCM.Properties.Settings.Default.Save();
+                BlogCoinOCM.Properties.Settings.Default.Save();
 
                 timer1.Start();
 
@@ -603,7 +603,7 @@ namespace NashCashOCM
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("This One Click Miner for NashCash* programmed by Encrypted Unicorn is a graphical interface for mining NaCa on pools in the network using xmrig by psychocrypt or xmr-stak by fireice-uk. You can find the ocm's source code on NashCash's GitHub and source codes for the bundled miners on their corresponding GitHub pages. Not related to xmr-stak or xmrig.\nVersion 1.0 beta 1", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("This One Click Miner for BlogCoin* programmed by Encrypted Unicorn is a graphical interface for mining NaCa on pools in the network using xmrig by psychocrypt or xmr-stak by fireice-uk. You can find the ocm's source code on BlogCoin's GitHub and source codes for the bundled miners on their corresponding GitHub pages. Not related to xmr-stak or xmrig.\nVersion 1.0 beta 1", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         
         private void timer1_Tick(object sender, EventArgs e)
@@ -711,7 +711,7 @@ namespace NashCashOCM
             addressRb.Checked = true;
             raindanceRb.Checked = false;
 
-            NashCashOCM.Properties.Settings.Default.savedAddress = addressTb.Text;
+            BlogCoinOCM.Properties.Settings.Default.savedAddress = addressTb.Text;
         }
 
         private void advancedCheck_CheckedChanged(object sender, EventArgs e)
@@ -745,7 +745,7 @@ namespace NashCashOCM
         {
             timer1.Interval = (int)refreshTimeNum.Value * 1000;
 
-            NashCashOCM.Properties.Settings.Default.statsSecs = (int)refreshTimeNum.Value;
+            BlogCoinOCM.Properties.Settings.Default.statsSecs = (int)refreshTimeNum.Value;
         }
 
         private void poolStatsUpdateCb_CheckedChanged(object sender, EventArgs e)
@@ -778,7 +778,7 @@ namespace NashCashOCM
                 cpuUsageNum.Enabled = false;
             }
 
-            NashCashOCM.Properties.Settings.Default.minerPreference = minerSelectionCb.SelectedIndex;
+            BlogCoinOCM.Properties.Settings.Default.minerPreference = minerSelectionCb.SelectedIndex;
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -791,47 +791,47 @@ namespace NashCashOCM
 
         private void cpuMiningCheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.cpuCb = cpuMiningCheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.cpuCb = cpuMiningCheck.Checked;
         }
 
         private void gpuMiningCheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.gpuCb = gpuMiningCheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.gpuCb = gpuMiningCheck.Checked;
         }
 
         private void amdMiningCheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.amdCb = amdMiningCheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.amdCb = amdMiningCheck.Checked;
         }
 
         private void nvidiaMiningCheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.nvCb = nvidiaMiningCheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.nvCb = nvidiaMiningCheck.Checked;
         }
 
         private void hardwareCb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.hwType = hardwareCb.SelectedIndex;
+            BlogCoinOCM.Properties.Settings.Default.hwType = hardwareCb.SelectedIndex;
         }
 
         private void writeLogCheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.logCb = writeLogCheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.logCb = writeLogCheck.Checked;
         }
 
         private void showCLICheck_CheckedChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.cliCb = showCLICheck.Checked;
+            BlogCoinOCM.Properties.Settings.Default.cliCb = showCLICheck.Checked;
         }
 
         private void cpuUsageNum_ValueChanged(object sender, EventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.cpuPerc = (int)cpuUsageNum.Value;
+            BlogCoinOCM.Properties.Settings.Default.cpuPerc = (int)cpuUsageNum.Value;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            NashCashOCM.Properties.Settings.Default.Save();
+            BlogCoinOCM.Properties.Settings.Default.Save();
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -841,42 +841,42 @@ namespace NashCashOCM
                 return;
             }
 
-            NashCashOCM.Properties.Settings.Default.savedPools = "";
-            NashCashOCM.Properties.Settings.Default.savedAddress = "";
-            NashCashOCM.Properties.Settings.Default.cpuCb = true;
-            NashCashOCM.Properties.Settings.Default.nvCb = false;
-            NashCashOCM.Properties.Settings.Default.amdCb = false;
-            NashCashOCM.Properties.Settings.Default.gpuCb = true;
-            NashCashOCM.Properties.Settings.Default.cpuPerc = 100;
-            NashCashOCM.Properties.Settings.Default.hwType = 0;
-            NashCashOCM.Properties.Settings.Default.statsSecs = 10;
-            NashCashOCM.Properties.Settings.Default.logCb = false;
-            NashCashOCM.Properties.Settings.Default.cliCb = false;
-            NashCashOCM.Properties.Settings.Default.minerPreference = 0;
-            NashCashOCM.Properties.Settings.Default.poolPreference = 0;
-            NashCashOCM.Properties.Settings.Default.xmrigCPUpath = @"miners\xmrig\xmrig.exe";
-            NashCashOCM.Properties.Settings.Default.xmrigAMDpath = @"miners\xmrigamd\xmrig-amd.exe";
-            NashCashOCM.Properties.Settings.Default.xmrigNVpath = @"miners\xmrignvidia\xmrig-nvidia.exe";
-            NashCashOCM.Properties.Settings.Default.xmrstakpath = @"miners\xmr-stak\xmr-stak.exe";
+            BlogCoinOCM.Properties.Settings.Default.savedPools = "";
+            BlogCoinOCM.Properties.Settings.Default.savedAddress = "";
+            BlogCoinOCM.Properties.Settings.Default.cpuCb = true;
+            BlogCoinOCM.Properties.Settings.Default.nvCb = false;
+            BlogCoinOCM.Properties.Settings.Default.amdCb = false;
+            BlogCoinOCM.Properties.Settings.Default.gpuCb = true;
+            BlogCoinOCM.Properties.Settings.Default.cpuPerc = 100;
+            BlogCoinOCM.Properties.Settings.Default.hwType = 0;
+            BlogCoinOCM.Properties.Settings.Default.statsSecs = 10;
+            BlogCoinOCM.Properties.Settings.Default.logCb = false;
+            BlogCoinOCM.Properties.Settings.Default.cliCb = false;
+            BlogCoinOCM.Properties.Settings.Default.minerPreference = 0;
+            BlogCoinOCM.Properties.Settings.Default.poolPreference = 0;
+            BlogCoinOCM.Properties.Settings.Default.xmrigCPUpath = @"miners\xmrig\xmrig.exe";
+            BlogCoinOCM.Properties.Settings.Default.xmrigAMDpath = @"miners\xmrigamd\xmrig-amd.exe";
+            BlogCoinOCM.Properties.Settings.Default.xmrigNVpath = @"miners\xmrignvidia\xmrig-nvidia.exe";
+            BlogCoinOCM.Properties.Settings.Default.xmrstakpath = @"miners\xmr-stak\xmr-stak.exe";
 
 
-            addressTb.Text = NashCashOCM.Properties.Settings.Default.savedAddress;
-            cpuMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.cpuCb;
-            nvidiaMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.nvCb;
-            amdMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.amdCb;
-            gpuMiningCheck.Checked = NashCashOCM.Properties.Settings.Default.gpuCb;
-            cpuUsageNum.Value = NashCashOCM.Properties.Settings.Default.cpuPerc;
-            hardwareCb.SelectedIndex = NashCashOCM.Properties.Settings.Default.hwType;
-            refreshTimeNum.Value = NashCashOCM.Properties.Settings.Default.statsSecs;
-            writeLogCheck.Checked = NashCashOCM.Properties.Settings.Default.logCb;
-            showCLICheck.Checked = NashCashOCM.Properties.Settings.Default.cliCb;
-            minerSelectionCb.SelectedIndex = NashCashOCM.Properties.Settings.Default.minerPreference;
-            selectionModeCb.SelectedIndex = NashCashOCM.Properties.Settings.Default.poolPreference;
+            addressTb.Text = BlogCoinOCM.Properties.Settings.Default.savedAddress;
+            cpuMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.cpuCb;
+            nvidiaMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.nvCb;
+            amdMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.amdCb;
+            gpuMiningCheck.Checked = BlogCoinOCM.Properties.Settings.Default.gpuCb;
+            cpuUsageNum.Value = BlogCoinOCM.Properties.Settings.Default.cpuPerc;
+            hardwareCb.SelectedIndex = BlogCoinOCM.Properties.Settings.Default.hwType;
+            refreshTimeNum.Value = BlogCoinOCM.Properties.Settings.Default.statsSecs;
+            writeLogCheck.Checked = BlogCoinOCM.Properties.Settings.Default.logCb;
+            showCLICheck.Checked = BlogCoinOCM.Properties.Settings.Default.cliCb;
+            minerSelectionCb.SelectedIndex = BlogCoinOCM.Properties.Settings.Default.minerPreference;
+            selectionModeCb.SelectedIndex = BlogCoinOCM.Properties.Settings.Default.poolPreference;
 
             poolListPanel.Controls.Clear();
             initPools();
 
-            NashCashOCM.Properties.Settings.Default.Save();
+            BlogCoinOCM.Properties.Settings.Default.Save();
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -886,7 +886,7 @@ namespace NashCashOCM
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Here you have to select what kind of hardware you have and which you want to mine with. Please check whether you want to use the miner for CPU and/or GPU (xmrstak) or which GPU brand you have (xmrig).\nPlease also select the hardware type of your PC as pools offer different difficulties for low or high end computers.\nEnter the NashCash address you want to mine to in the text box, it will be saved unless you change it again.\nYou can also set the frequency of updates to the mining statistics above.");
+            MessageBox.Show("Here you have to select what kind of hardware you have and which you want to mine with. Please check whether you want to use the miner for CPU and/or GPU (xmrstak) or which GPU brand you have (xmrig).\nPlease also select the hardware type of your PC as pools offer different difficulties for low or high end computers.\nEnter the BlogCoin address you want to mine to in the text box, it will be saved unless you change it again.\nYou can also set the frequency of updates to the mining statistics above.");
         }
 
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

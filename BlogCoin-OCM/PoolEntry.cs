@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.NetworkInformation;
 
-namespace NashCashOCM
+namespace BlogCoinOCM
 {
     public partial class PoolEntry : UserControl
     {
@@ -101,7 +101,7 @@ namespace NashCashOCM
                     hashrate = int.Parse(getFromJSON(@"""hashrate""", e.Result));
                     fee = double.Parse(getFromJSON(@"""fee""", e.Result).Replace('.', ','));
 
-                    payoutLbl.Text = payout.ToString() + " NaCa";
+                    payoutLbl.Text = payout.ToString() + " BLOG";
                     hashLbl.Text = hashrate.ToString() + " H/s";
                     feeLbl.Text = fee.ToString() + "%";
                 }
@@ -216,10 +216,10 @@ namespace NashCashOCM
 
         private void selectedCb_CheckedChanged(object sender, EventArgs e)
         {
-            if (selectedCb.Checked && !NashCashOCM.Properties.Settings.Default.savedPools.Contains(miningAddress))
-                NashCashOCM.Properties.Settings.Default.savedPools += miningAddress;
+            if (selectedCb.Checked && !BlogCoinOCM.Properties.Settings.Default.savedPools.Contains(miningAddress))
+                BlogCoinOCM.Properties.Settings.Default.savedPools += miningAddress;
             else if (!selectedCb.Checked)
-                NashCashOCM.Properties.Settings.Default.savedPools = NashCashOCM.Properties.Settings.Default.savedPools.Replace(miningAddress, "");
+                BlogCoinOCM.Properties.Settings.Default.savedPools = BlogCoinOCM.Properties.Settings.Default.savedPools.Replace(miningAddress, "");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace NashCashOCM
+﻿namespace BlogCoinOCM
 {
     partial class PoolEntry
     {

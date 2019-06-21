@@ -7,8 +7,8 @@
     <ProjectGuid>{2B79C381-C8F4-4001-BDD5-F1B9938370AF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NashCashOCM</RootNamespace>
-    <AssemblyName>NashCashOCM</AssemblyName>
+    <RootNamespace>BlogCoinOCM</RootNamespace>
+    <AssemblyName>BlogCoinOCM</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -93,7 +93,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\nashcash_symbol_color.png" />
+    <None Include="Resources\BlogCoin_symbol_color.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NashCashOCM.Properties {
+namespace BlogCoinOCM.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace NashCashOCM.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NashCashOCM.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BlogCoinOCM.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace NashCashOCM.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nashcash_symbol_color {
+        internal static System.Drawing.Bitmap BlogCoin_symbol_color {
             get {
-                object obj = ResourceManager.GetObject("nashcash_symbol_color", resourceCulture);
+                object obj = ResourceManager.GetObject("BlogCoin_symbol_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
