@@ -1,31 +1,31 @@
 {
   "pools": [
     {
-      "name": "NashCash Official",
-      "url": "https://pool.nashcash.net",
-      "api": "https://pool.nashcash.net:8119/",
+      "name": "CoinsForHash - Low end hardware",
+      "url": "https://coinsforhash.tk",
+      "api": "https://coinsforhash.tk:8136",
       "type": "forknote",
-      "miningAddress": "pool.nashcash.net",
+      "miningAddress": "coinsforhash.tk:3391",
       "mergedMining": false,
       "mergedMiningIsParentChain": false
-     },
+    },
     {
-      "name": "BlueRock Pools",
-      "url": "https://naca.bluerockpools.net",
-      "api": "https://naca.bluerockpools.net:8123/",
+      "name": "CoinsForHash - Mid range hardware",
+      "url": "https://coinsforhash.tk",
+      "api": "https://coinsforhash.tk:8136",
       "type": "forknote",
-      "miningAddress": "naca.bluerockpools.net",
+      "miningAddress": "coinsforhash.tk:3392",
       "mergedMining": false,
       "mergedMiningIsParentChain": false
-     },
-     {
-      "name": "Miners Republic",
-      "url": "http://minersrepublic.com",
-      "api": "http://minersrepublic.com:8120/",
+    },
+    {
+      "name": "CoinsForHash - High end hardware",
+      "url": "https://coinsforhash.tk",
+      "api": "https://coinsforhash.tk:8136",
       "type": "forknote",
-      "miningAddress": "minersrepublic.com",
+      "miningAddress": "coinsforhash.tk:3393",
       "mergedMining": false,
       "mergedMiningIsParentChain": false
-     }
+    }
   ]
 }
